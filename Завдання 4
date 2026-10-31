@@ -1,0 +1,33 @@
+#include <iostream>
+#include <queue>
+#include <string>
+using namespace std;
+
+struct Book {
+    string title;
+    int pages;
+};
+
+int main() {
+    system("chcp 1251 > nul");
+
+    queue<Book> books;
+
+    books.push({"Кобзар", 450});
+    books.push({"Маленький принц", 120});
+    books.push({"Тигролови", 320});
+    books.push({"Захар Беркут", 280});
+    books.push({"Майстер і Маргарита", 480});
+
+    cout << "Книги, що містять понад 300 сторінок:\n";
+    while (!books.empty()) {
+        Book current = books.front();
+        books.pop();
+
+        if (current.pages > 300) {
+            cout << "-" << current.title << " (" << current.pages << " стор.)\n";
+        }
+    }
+
+    return 0;
+}
