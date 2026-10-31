@@ -3,30 +3,25 @@
 using namespace std;
 
 int main() {
-    // Встановлення української мови у консолі
     system("chcp 1251 > nul");
 
     queue<int> numbers;
 
-    // Заповнення черги 20 цілими числами
     int values[20] = {15, 8, 23, 4, 15, 42, 10, 18, 5, 30, 2, 25, 15, 9, 12, 10, 50, 7, 3, 20};
     for (int i = 0; i < 20; i++) {
         numbers.push(values[i]);
     }
 
-    // Запам'ятовуємо значення першого елемента черги
     int firstElement = numbers.front();
     int sum = 0;
 
     cout << "Елементи черги: ";
 
-    // Опрацювання черги
     while (!numbers.empty()) {
         int current = numbers.front();
         cout << current << " ";
         numbers.pop();
 
-        // Перевірка, чи поточний елемент більший за перший
         if (current > firstElement) {
             sum += current;
         }
