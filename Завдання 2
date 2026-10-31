@@ -5,30 +5,28 @@ using namespace std;
 int main() {
     system("chcp 1251 > nul");
 
-    queue<int> numbers;
+    queue<int> source;
+    queue<int> result;
 
-    int values[20] = {15, 8, 23, 4, 15, 42, 10, 18, 5, 30, 2, 25, 15, 9, 12, 10, 50, 7, 3, 20};
-    for (int i = 0; i < 20; i++) {
-        numbers.push(values[i]);
+    for (int i = 1; i <= 200; i++) {
+        source.push(i);
     }
 
-    int firstElement = numbers.front();
-    int sum = 0;
+    while (!source.empty()) {
+        int x = source.front();
+        source.pop();
 
-    cout << "Елементи черги: ";
-
-    while (!numbers.empty()) {
-        int current = numbers.front();
-        cout << current << " ";
-        numbers.pop();
-
-        if (current > firstElement) {
-            sum += current;
+        if (x % 4 == 0 && x % 6 == 0) {
+            result.push(x);
         }
     }
 
-    cout << "\n\nПерший елемент черги: " << firstElement << endl;
-    cout << "Сума елементів, більших за перший (" << firstElement << "): " << sum << endl;
+    cout << "Числа, які діляться на 4 і на 6 одночасно:\n";
+    while (!result.empty()) {
+        cout << result.front() << " ";
+        result.pop();
+    }
+    cout << endl;
 
     return 0;
 }
