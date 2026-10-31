@@ -1,0 +1,32 @@
+#include <iostream>
+#include <queue>
+#include <string>
+using namespace std;
+
+struct Car {
+    string number;
+    int entryTime;
+};
+
+int main() {
+    system("chcp 1251 > nul");
+
+    queue<Car> parking;
+
+    parking.push({"AA1234BK", 15});
+    parking.push({"AB5678CI", 30});
+    parking.push({"AC9012EX", 45});
+    parking.push({"AE3456HP", 70});
+    parking.push({"AH7890IB", 105});
+
+    cout << "Порядок виїзду автомобілів з парковки:\n";
+    while (!parking.empty()) {
+        Car current = parking.front();
+        parking.pop();
+
+        cout << "Автомобіль: " << current.number 
+             << " | Час заїзду: " << current.entryTime << " хв від початку дня\n";
+    }
+
+    return 0;
+}
