@@ -1,0 +1,43 @@
+#include <iostream>
+#include <queue>
+#include <string>
+using namespace std;
+
+int main() {
+    system("chcp 1251 > nul");
+
+    string str;
+    cout << "Введіть рядок: ";
+    getline(cin, str);
+
+    queue<char> q;
+    for (char c : str) {
+        q.push(c);
+    }
+
+    int firstDot = -1;
+    int lastDot = -1;
+    int index = 0;
+
+    while (!q.empty()) {
+        char c = q.front();
+        q.pop();
+
+        if (c == '.') {
+            if (firstDot == -1) {
+                firstDot = index;
+            }
+            lastDot = index;
+        }
+        index++;
+    }
+
+    if (firstDot == -1 || firstDot == lastDot) {
+        cout << "У рядку менше двох крапок." << endl;
+    } else {
+        int count = lastDot - firstDot - 1;
+        cout << "Кількість символів між першою та останньою крапкою: " << count << endl;
+    }
+
+    return 0;
+}
